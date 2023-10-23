@@ -69,16 +69,14 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Iterable<PersonDto> findPersonsByCity(String city) {
-        List<Person> persons = personRepository.findByAddressCity(city);
-        return persons.stream()
+        return personRepository.findByAddressCity(city).stream()
                 .map(person -> modelMapper.map(person, PersonDto.class))
                 .collect(Collectors.toList());
     }
 
     @Override
     public Iterable<PersonDto> findPersonsByName(String name) {
-        List<Person> persons = personRepository.findByName(name);
-        return persons.stream()
+        return personRepository.findByName(name).stream()
                 .map(person -> modelMapper.map(person, PersonDto.class))
                 .collect(Collectors.toList());
     }
